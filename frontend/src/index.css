@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+/* Plain CSS variables that flip with the colour scheme. */
+:root {
+  --bg: #ffffff;
+  --fg: #000000;
+  --surface: #ffffff;
+  --surface-2: #fafafa;
+  --border: #eaeaea;
+  --border-strong: #d4d4d4;
+  --muted: #666666;
+  --subtle: #888888;
+  --hover: #f2f2f2;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --fg: #ededed;
+    --surface: #0a0a0a;
+    --surface-2: #111111;
+    --border: #333333;
+    --border-strong: #444444;
+    --muted: #a1a1a1;
+    --subtle: #888888;
+    --hover: #1a1a1a;
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-hover: var(--hover);
+}
+
+@theme {
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@utility label {
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+@utility num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+@layer base {
+  html,
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  select,
+  input {
+    font: inherit;
+  }
+  input[type="range"] {
+    accent-color: var(--fg);
+  }
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0.6;
+    cursor: pointer;
+  }
+}
