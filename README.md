@@ -22,6 +22,23 @@ More detail:
 
 All times are UTC. In January, UTC is the same as UK local time (GMT).
 
+## Features
+
+- **Day-Ahead decision view**: the latest WINDFOR forecast available before a configurable cutoff, with a P10–P90 band and actual outturn overlaid, plus daily forecast/P10/P90 energy, peak/minimum MW, MAE and bias.
+- **Explorer view**: compares forecasts at a chosen lead time (0–48h) against actual outturn over any date range, with per-hour error.
+- **Accuracy view**: headline error metrics (MAE, RMSE, bias, MAPE, nMAE, P90/P99), an error-by-horizon curve, an error histogram, and an error profile by hour of day.
+- **Reproducible data**: reads a committed JSON snapshot of Elexon WINDFOR/FUELHH data for fast, consistent results; a script re-downloads a fresh snapshot on demand.
+- **Containerized**: one-command `docker compose up` runs the FastAPI backend and an nginx-served React frontend together, or either can run standalone.
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Backend | Python 3.11, FastAPI, pandas, Pydantic |
+| Frontend | React 18, TypeScript, Vite, Tailwind CSS v4, Recharts |
+| Data source | Elexon Insights API (`WINDFOR`, `FUELHH`), committed as a JSON snapshot |
+| Deployment | Docker + nginx, or Vercel (Python serverless function + static frontend) |
+
 ## Repository layout
 
 ```
